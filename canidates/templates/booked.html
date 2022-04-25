@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    {%for cart in items%}
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card-body">
+                <h5 class="card-title">Book name: {{cart.item.}}</h5>
+                <h5 class="card-title">Author: {{cart.item.author}}</h5>
+                <h5 class="card-title">Avalable: {{cart.item.copies}}</h5>
+                <h5 class="card-title">Date: {{cart.date}}</h5>
+
+            </div>
+        </div>
+        <div class="col-4 mt-3">
+            <h5 class="card-title">Price: {{cart.item.price}}</h5>
+            <a href="{%url 'order' cart.id cart.item.id%}" class="btn btn-primary">Book now</a>
+            <span>{{cart.status}}</span>
+            <div class="col-4 mt-2">
+                <a href="{% url 'removecart' cart.id %}" class="btn btn-danger">Remove</a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+</body>
+</html>
